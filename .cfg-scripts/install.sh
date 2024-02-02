@@ -1,8 +1,12 @@
 #!/bin/zsh
 # See https://www.atlassian.com/git/tutorials/dotfiles
 
+# Brew repos
+brew tap -q sdkman/tap
+
 # Install required packages
 brew update && brew install -q \
+  sdkman-cli
   fzf \
   thefuck \
   bat \
