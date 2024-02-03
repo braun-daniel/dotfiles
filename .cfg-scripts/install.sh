@@ -6,7 +6,7 @@ brew tap -q sdkman/tap
 
 # Install required packages
 brew update && brew install -q \
-  sdkman-cli
+  sdkman-cli \
   fzf \
   thefuck \
   bat \
