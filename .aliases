@@ -8,6 +8,7 @@ alias config-reset='config reset --hard HEAD'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias -- -="cd -"
 alias ll='eza -l --git'
 alias llr='eza -l --git -T'
 alias la='eza -la --git'
