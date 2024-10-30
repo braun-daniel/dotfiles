@@ -1,32 +1,35 @@
 #!/bin/zsh
 # See https://www.atlassian.com/git/tutorials/dotfiles
 
-# Check if MacPorts is installed
-if command -v brew >/dev/null 2>&1; then
-  package_manager="homebrew"
-elif command -v port >/dev/null 2>&1; then
-  package_manager="macports"
-else
-  echo "Neither MacPorts nor Homebrew is installed. Please install either of them."
+# Check if Homebrew is installed
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Homebrew is not installed. Please install it."
   exit 1
 fi
 
-# Check if the package manager can be overridden with an environment variable
-if [ -n "$PACKAGE_MANAGER" ]; then
-  package_manager="$PACKAGE_MANAGER"
-fi
+# Define the list of packages and taps
+packages=(
+  fzf
+  thefuck
+  bat
+  fd
+  yt-dlp
+  eza
+  diff-so-fancy
+  z
+  autojump
+  navi
+  lazygit
+  sdkman-cli
+)
+taps=(
+  sdkman/tap
+)
 
-# Define the list of packages
-packages="sdkman fzf thefuck bat fd yt-dlp eza diff-so-fancy z autojump navi lazygit"
-
-# Install required packages using the selected package manager
-if [ "$package_manager" = "macports" ]; then
-  sudo port selfupdate
-  sudo port install -q $packages
-elif [ "$package_manager" = "homebrew" ]; then
-  brew update
-  brew install -q $packages
-fi
+# Install required packages using Homebrew
+brew update
+brew tap "${taps[@]}"
+brew install -q "${packages[@]}"
 
 # Check out GIT repos
 mkdir -p $HOME/.cfg
