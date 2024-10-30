@@ -229,6 +229,9 @@ alias gtl='gtl(){ git tag --sort=-v:refname -n --list "${1}*" }; noglob gtl'
 alias gk='\gitk --all --branches &!'
 alias gke='\gitk --all $(git log --walk-reflogs --pretty=%h) &!'
 
+# Lazygit
+alias lg='lazygit'
+
 # Clean up local branches that got merged into the current branch and have no remote match.
 alias git-clean-local-branches='git branch --merged | grep -vFf <(git branch -r | cut -d'/' -f2-) | xargs git branch -d'
 alias git-clean-local-branches-dryrun='git branch --merged | grep -vFf <(git branch -r | cut -d'/' -f2-)'
