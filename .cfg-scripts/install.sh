@@ -17,7 +17,7 @@ if [ -n "$PACKAGE_MANAGER" ]; then
 fi
 
 # Define the list of packages
-packages="sdkman fzf thefuck bat fd yt-dlp eza diff-so-fancy z autojump navi"
+packages="sdkman fzf thefuck bat fd yt-dlp eza diff-so-fancy z autojump navi lazygit"
 
 # Install required packages using the selected package manager
 if [ "$package_manager" = "macports" ]; then
@@ -41,8 +41,8 @@ mkdir -p $HOME/.zsh/plugins
   # Configure config
   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME reset --hard HEAD
-  
-} > /dev/null 2>&1
+
+} >/dev/null 2>&1
 
 # Setup fzf
 if [ -z "$(ls -A $(brew --prefix)/opt/fzf)" ]; then
