@@ -7,14 +7,29 @@ if ! command -v brew >/dev/null 2>&1; then
   exit 1
 fi
 
-# Define the list of packages
-packages="fzf thefuck bat fd yt-dlp eza diff-so-fancy z autojump navi lazygit sdkman-cli"
-taps="sdkman/tap"
+# Define the list of packages and taps
+packages=(
+  fzf
+  thefuck
+  bat
+  fd
+  yt-dlp
+  eza
+  diff-so-fancy
+  z
+  autojump
+  navi
+  lazygit
+  sdkman-cli
+)
+taps=(
+  sdkman/tap
+)
 
 # Install required packages using Homebrew
 brew update
-brew tap $taps
-brew install -q $packages
+brew tap "${taps[@]}"
+brew install -q "${packages[@]}"
 
 # Check out GIT repos
 mkdir -p $HOME/.cfg
