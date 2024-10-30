@@ -7,12 +7,17 @@
 [pull]
 	ff = only
 	rebase = false
+[push]
+    autoSetupRemote = true
+
+# If azuredevops folder exists, include its .gitconfig
 [includeIf "gitdir:~/git/azuredevops/"]
     path = ~/git/azuredevops/.gitconfig
 
 # Git-Diff-So-Fancy
 [core]
     pager = diff-so-fancy | less --tabs=4 -RF
+	autocrlf = input
 [interactive]
     diffFilter = diff-so-fancy --patch
 [color]
@@ -30,3 +35,17 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+# Signing
+[gpg "ssh"]
+    allowedSignersFile = ~/.config/git/allowed_signers
+
+# VSCode
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+# OSX Keychain integration
+[credential]
+    helper = osxkeychain
